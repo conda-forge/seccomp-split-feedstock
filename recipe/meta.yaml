@@ -1,5 +1,5 @@
 {% set name = "seccomp-split" %}
-{% set version = "2.4.1" %}
+{% set version = "2.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/seccomp/libseccomp/archive/v{{ version }}.tar.gz
-  sha256: 36aa502c0461ae9efc6c93ec2430d6badd9bf91ecbe73806baf7b7c6f687ab4f
+  sha256: 57e1498d42e3b86fda3be55bcca6a651ee0c0d86518913f7329e727ed541d788
 
 build:
   number: 0
