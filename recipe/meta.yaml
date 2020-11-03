@@ -1,5 +1,5 @@
 {% set name = "seccomp-split" %}
-{% set version = "2.4.1" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/seccomp/libseccomp/archive/v{{ version }}.tar.gz
-  sha256: 36aa502c0461ae9efc6c93ec2430d6badd9bf91ecbe73806baf7b7c6f687ab4f
+  sha256: 7720d01bb154afcc4e623434a577f181ea2a72585ef51a311ef56220e26723e6
 
 build:
-  number: 2
-  skip: True  # [not linux]
+  number: 0
+  skip: true  # [not linux]
 
 requirements:
   build:
@@ -66,7 +66,7 @@ about:
   home: https://github.com/seccomp/libseccomp
   license: LGPL-2.1-only
   license_file: LICENSE
-  summary: 'libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.'
+  summary: libseccomp provides an easy to use, platform independent, interface to the Linux syscall filtering mechanism.
 
   description: |
     The libseccomp library provides an easy to use, platform independent, 
