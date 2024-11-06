@@ -11,12 +11,13 @@ source:
     - 0001-Dynamic-linking-for-Python-package.patch
 
 build:
-  number: 4
+  number: 5
   skip: True  # [not linux]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - automake
     - autoconf
     - libtool
@@ -33,6 +34,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - make
     test:
       commands:
@@ -44,6 +46,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
       host:
         - cython
         - python
