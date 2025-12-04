@@ -51,6 +51,7 @@ outputs:
         - cython
         - python
         - pip
+        - setuptools
         - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
         - {{ pin_subpackage('libseccomp', exact=True) }}
