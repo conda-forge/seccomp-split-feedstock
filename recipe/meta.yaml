@@ -1,4 +1,4 @@
-{% set version = "2.4.4" %}
+{% set version = "2.5.6" %}
 
 package:
   name: seccomp-split
@@ -6,21 +6,24 @@ package:
 
 source:
   url: https://github.com/seccomp/libseccomp/releases/download/v{{ version }}/libseccomp-{{ version }}.tar.gz
-  sha256: 4e79738d1ef3c9b7ca9769f1f8b8d84fc17143c2c1c432e53b9c64787e0ff3eb
+  sha256: 04c37d72965dce218a0c94519b056e1775cf786b5260ee2b7992956c4ee38633
   patches:
-    - 0001-Dynamic-linking-for-Python-package.patch
+    - patches/0001-Dynamic-linking-for-Python-package.patch
 
 build:
-  number: 4
-  skip: True  # [not linux]
+  number: 0
+  skip: true  # [not linux]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - automake
     - autoconf
     - libtool
     - make
+  host:
+    - gperf
 
 outputs:
   - name: libseccomp
@@ -33,6 +36,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - make
     test:
       commands:
@@ -44,10 +48,15 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+        - python                                 # [build_platform != target_platform]
+        - cython                                 # [build_platform != target_platform]
       host:
         - cython
         - python
         - pip
+        - setuptools
         - {{ pin_subpackage('libseccomp', exact=True) }}
       run:
         - {{ pin_subpackage('libseccomp', exact=True) }}
@@ -75,3 +84,4 @@ extra:
   recipe-maintainers:
     - mbargull
     - sodre
+    - h-vetinari
