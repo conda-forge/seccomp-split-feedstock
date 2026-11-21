@@ -1,4 +1,4 @@
-{% set version = "2.6.1" %}
+{% set version = "2.6.2" %}
 
 package:
   name: seccomp-split
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/seccomp/libseccomp/releases/download/v{{ version }}/libseccomp-{{ version }}.tar.gz
-  sha256: 501f66c667225d53791b97e1d7cf85ab764c297d04881f60f38f451c4b0ee1be
+  sha256: 6b845d352c6d7887d8d134c43d86850d40f5dcee11ad1675c18197ae4d869d42
   patches:
     - patches/0001-Dynamic-linking-for-Python-package.patch
 
 build:
-  number: 3
+  number: 0
   skip: true  # [not linux]
 
 requirements:
